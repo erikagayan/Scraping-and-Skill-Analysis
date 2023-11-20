@@ -28,5 +28,5 @@ def get_vacancy_links(url):
 if __name__ == "__main__":
     test_url = "https://jobs.dou.ua/vacancies/?category=Python"
     test_links = get_vacancy_links(test_url)
-    print(f"Найдено ссылок: {len(test_links)}")
-    print("Первые 5 ссылок:", test_links[:5])
+    print(f"Found links: {len(test_links)}")
+    print("First 5 links:", test_links[:5])
