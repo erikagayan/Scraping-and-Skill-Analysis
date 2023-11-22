@@ -22,7 +22,7 @@ def get_vacancy_links(url):
     soup = BeautifulSoup(driver.page_source, "html.parser")
     driver.quit()
 
-    return [a['href'] for a in soup.find_all('a', class_='vt')]
+    return [a["href"] for a in soup.find_all("a", class_="vt")]
 
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+import os
 import threading
 from scraper import get_vacancy_links
 from counter import count_skills
@@ -21,7 +22,9 @@ def main():
     lock = threading.Lock()
 
     for url in vacancy_links:
-        thread = threading.Thread(target=process_vacancy, args=(url, total_skills_count, lock))
+        thread = threading.Thread(
+            target=process_vacancy, args=(url, total_skills_count, lock)
+        )
         thread.start()
         threads.append(thread)
 
@@ -31,7 +34,15 @@ def main():
     for skill, count in total_skills_count.items():
         print(f"{skill}: {count}")
 
-    csv_filename = 'skills_count.csv'
+    csv_filename = "skills_count.csv"
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(current_dir)
+    data_analysis_dir = os.path.join(project_dir, "data_analysis")
+    csv_filename = os.path.join(data_analysis_dir, "skills_count.csv")
+
+    if not os.path.exists(data_analysis_dir):
+        os.makedirs(data_analysis_dir)
 
     write_skills_to_csv(total_skills_count, csv_filename)
 

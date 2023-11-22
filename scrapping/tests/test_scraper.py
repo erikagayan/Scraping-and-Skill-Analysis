@@ -15,8 +15,11 @@ class TestWebScraping(unittest.TestCase):
     def test_links_format(self):
         result = get_vacancy_links("https://jobs.dou.ua/vacancies/?category=Python")
         for url in result:
-            self.assertTrue(url.startswith("http://") or url.startswith("https://"), f"Invalid URL: {url}")
+            self.assertTrue(
+                url.startswith("http://") or url.startswith("https://"),
+                f"Invalid URL: {url}",
+            )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
